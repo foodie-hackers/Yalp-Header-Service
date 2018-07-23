@@ -101,7 +101,7 @@ const data = [
   { id: 100, name: 'Jardiniere' },
 ];
 
-
+// add reviewCount, averageRating and priceRange to each restuarant
 const generateProps = (array) => {
   for (let i = 0; i < array.length; i += 1) {
     array[i].reviewCount = Math.floor(Math.random() * 1000);
@@ -112,6 +112,13 @@ const generateProps = (array) => {
 
 generateProps(data);
 
-module.exports = {
-  data,
+const generateQueries = (array) => {
+  const queries = [];
+  for (let i = 0; i < array.length; i += 1) {
+    queries.push(`INSERT into restaurants (name, reviewCount, averageRating, priceRange) VALUES ('${array[i].name}', ${array[i].reviewCount}, ${array[i].averageRating}, ${array[i].priceRange});`);
+  }
+
+  return queries;
 };
+
+generateQueries(data);
