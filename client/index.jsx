@@ -35,6 +35,18 @@ class App extends React.Component {
           </div>
         </div>
         <div className="biz-page-header-right">
+          <div className="write-review-button">
+            <button>Write a Review</button>
+          </div>
+          <span className="add-photo-button">
+            <button>Add Photo</button>
+          </span>
+          <span classname="share-button">
+            <button>Share</button>
+          </span>
+          <span className="save-button">
+            <button>Save</button>
+          </span>
         </div>
       </div>
     );
