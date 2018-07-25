@@ -27,7 +27,7 @@ class App extends React.Component {
               {this.state.averageRating}
             </div>
             <div className="reviews">
-              {this.state.reviewCount}
+              {this.state.reviewCount} reviews
             </div>
             <div className="priceRange">
               {this.state.priceRange === 1 ? '$' : this.state.priceRange === 2 ? '$$' : this.state.priceRange === 3 ? '$$$' : '$$$$'}
