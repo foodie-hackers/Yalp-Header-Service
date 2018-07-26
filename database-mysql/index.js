@@ -15,6 +15,18 @@ connection.connect((err) => {
   console.log('Connected to database!');
 });
 
+const getRestaurantInfo = (id, callback) => {
+  const query = `SELECT * FROM restaurants WHERE id = ${id};`;
+  connection.query(query, (error, results) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(null, results);
+    }
+  });
+};
+
 module.exports = {
   connection,
+  getRestaurantInfo,
 };
