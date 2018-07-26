@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/restaurants/:restaurantId', (req, res) => {
-  db.getRestaurantInfo(req.body.id, (error, results) => {
+  db.getRestaurantInfo(req.params.id, (error, results) => {
     if (error) {
       console.log(error);
     } else {
