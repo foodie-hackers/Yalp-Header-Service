@@ -13,6 +13,21 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    $.ajax({
+      method: 'GET',
+      url: 'http://localhost:3000/restaurants/1',
+      dataType: 'json',
+    }).then((results) => {
+      this.setState({
+        name: results[0].name,
+        averageRating: results[0].averageRating,
+        reviewCount: results[0].reviewCount,
+        priceRange: results[0].priceRange,
+      });
+    });
+  }
+
   render() {
     return (
       <div className="biz-page-header">
@@ -41,7 +56,7 @@ class App extends React.Component {
           <span className="add-photo-button">
             <button>Add Photo</button>
           </span>
-          <span classname="share-button">
+          <span className="share-button">
             <button>Share</button>
           </span>
           <span className="save-button">
