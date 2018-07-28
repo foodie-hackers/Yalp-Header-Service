@@ -27,5 +27,6 @@ const getRestaurantInfo = (id, callback) => {
 };
 
 module.exports = {
+  connection,
   getRestaurantInfo,
 };
