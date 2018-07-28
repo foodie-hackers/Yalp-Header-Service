@@ -39,7 +39,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-      - run: mysql -h 127.0.0.1 -u root < ./database/schema.sql
+      - run: mysql -h 127.0.0.1 -u root < ./database-mysql/schema.sql
 
       - run:
           command: node ./server/index.js
