@@ -6,7 +6,9 @@
   "license": "",
   "jest": {
   "verbose": true,
-  "testURL": "http://localhost/"
+  "testURL": "http://localhost/",
+  "collectCoverage": true,
+  "collectCoverageFrom": ["database-mysql/**/*.{js,jsx}", "server/**/*.{js,jsx}"]
   },
   "engines": {
     "node": ">=6.13.0"
