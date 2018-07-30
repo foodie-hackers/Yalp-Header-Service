@@ -36,28 +36,29 @@ class App extends React.Component {
 
   render() {
     const Div = styled.div`
-      background-color: white;
+      background-color: #f5f5f5;
       display: flex;
-      font-family: arial;
+      font-family: Helvetica Neue;
     `;
 
     const HeaderLeft = styled.div`
       display: flex;
       width: 50%;
-      padding-left: 20px;
+      padding-left: 240px;
     `;
 
     const HeaderRight = styled.div`
       display: flex;
       width: 50%;
+      padding-top: 40px;
+      padding-right: 200px;
     `;
 
     const RestaurantName = styled.div`
       font-weight: bold;
       font-size: 36px;
-      padding-top: 6px;
+      padding-top: 18px;
       padding-bottom: 6px;
-      line-height: 1.16667em;
       width: 100%;
     `;
 
@@ -101,6 +102,55 @@ class App extends React.Component {
       vertical-align: baseline;
     `;
 
+    const WriteReview = styled.div`
+      display: flex;
+      margin: 12px 12px 16px 16px;
+    `;
+
+    const ReviewButton = styled.div`
+      display: flex;
+      vertical-align: middle;
+      font-size: 16px;
+      cursor: pointer;
+      border: 1px solid;
+      font-weight: bold;
+      text-align: center;
+      padding: 12px 19px 4px;
+      border-radius: 3px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+      background-color: #d90007;
+      border-color: #8d0005;
+      color: white;
+    `;
+
+    const StarIcon = styled.div`
+      display: flex;
+      width: 24px;
+      height: 24px;
+    `;
+
+    const Button = ReviewButton.extend`
+      color: #666;
+      background-color: white;
+      padding: 5px 8px;
+      font-size: 12px;
+      text-align: right;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+      border-color: #ccc;
+      border: 1px solid;
+    `;
+
+    const Icon = styled.div`
+      display: flex;
+      width: 18px;
+      height: 18px;
+    `;
+
+    const PhotoShareSave = styled.div`
+      display: flex;
+      margin: 24px 0px 24px 24px;
+    `;
+
     return (
 
       <Div className="biz-page-header">
@@ -127,18 +177,34 @@ class App extends React.Component {
           </div>
         </HeaderLeft>
         <HeaderRight>
-          <div className="write-review-button">
-            <button>Write a Review</button>
-          </div>
-          <span className="add-photo-button">
-            <button>Add Photo</button>
-          </span>
-          <span className="share-button">
-            <button>Share</button>
-          </span>
-          <span className="save-button">
-            <button>Save</button>
-          </span>
+          <WriteReview>
+            <ReviewButton>
+              <StarIcon>
+                <FontAwesomeIcon icon="star" />
+              </StarIcon>
+              Write a Review
+            </ReviewButton>
+          </WriteReview>
+          <PhotoShareSave>
+            <Button>
+              <Icon>
+                <FontAwesomeIcon icon="camera" />
+              </Icon>
+              Add Photo
+            </Button>
+            <Button>
+              <Icon>
+                <FontAwesomeIcon icon="share-square" />
+              </Icon>
+              Share
+            </Button>
+            <Button>
+              <Icon>
+                <FontAwesomeIcon icon="bookmark" />
+              </Icon>
+              Save
+            </Button>
+          </PhotoShareSave>
         </HeaderRight>
       </Div>
     );
