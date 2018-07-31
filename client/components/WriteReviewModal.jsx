@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ModalBackground = styled.div`
   background-color:green;
@@ -61,6 +62,13 @@ const ReviewText = styled.textarea`
   height: 100%;
 `;
 
+const rating = () => ({
+  backgroundColor: 'gray',
+  color: 'white',
+  margin: '2px',
+  padding: '4px',
+});
+
 class WriteReviewModal extends React.Component {
   constructor(props) {
     super(props);
@@ -85,6 +93,9 @@ class WriteReviewModal extends React.Component {
             {this.props.restaurantName}
           </Title>
           <Form>
+            {Array(5).fill().map(() => (
+              <FontAwesomeIcon icon="star" style={rating()} />
+            ))}
             <ReviewText placeholder={this.state.value} onChange={this.handleChange}>
             </ReviewText>
           </Form>
