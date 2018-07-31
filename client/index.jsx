@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import styled from 'styled-components';
+import { BrowserRouter, withRouter } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCamera, faShareSquare, faBookmark } from '@fortawesome/free-solid-svg-icons';
@@ -129,6 +130,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.location.pathname.substr(1),
       name: 'Marufuku Ramen',
       averageRating: 4.5,
       reviewCount: 1332,
@@ -142,9 +144,10 @@ class App extends React.Component {
   componentDidMount() {
     $.ajax({
       method: 'GET',
-      url: 'http://localhost:3000/restaurants/1',
+      url: `http://localhost:3000/restaurants/${this.state.id}`,
       dataType: 'json',
     }).then((results) => {
+      console.log(results);
       this.setState({
         name: results[0].name,
         averageRating: results[0].averageRating,
@@ -227,7 +230,8 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+const AppWithRouter = withRouter(props => <App {...props} />);
+
+ReactDOM.render(<BrowserRouter>
+  <AppWithRouter />
+  </BrowserRouter>, document.getElementById('app'));
