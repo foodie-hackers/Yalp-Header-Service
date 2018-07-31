@@ -1,25 +1,64 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const ModalBackground = styled.div`
+  background-color:green;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.4);
+`;
+
+const ModalContent = styled.div`
+  background-color: #fefefe;
+  margin: 5% auto;
+  border: 1px solid #888;
+  width: 80%;
+  height: 100%;
+`;
 
 const Title = styled.div`
-  color: blue;
+  color: #0073bb;
+  padding-top: 20px;
+  padding-left: 100px;
+  padding-bottom: 10px;
+  font-size: 36px;
+  font-weight: bold;
+`;
+
+const Form = styled.div`
+  padding-left: 100px;
+  width: 50%;
+  height: 50%;
 `;
 
 const PostReview = styled.div`
   display: flex;
+  margin-left: 10%;
+  margin-top: 5%;
   vertical-align: middle;
   font-size: 16px;
+  width: 10%;
   cursor: pointer;
   border: 1px solid;
   font-weight: bold;
   text-align: center;
-  padding: 12px 19px 4px;
+  padding: 4px 4px 4px;
   border-radius: 3px;
   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
   background-color: #d90007;
   border-color: #8d0005;
   color: white;
+`;
+
+const ReviewText = styled.textarea`
+  font-size: 18px;
+  width: 100%;
+  height: 100%;
 `;
 
 class WriteReviewModal extends React.Component {
@@ -40,17 +79,20 @@ class WriteReviewModal extends React.Component {
 
   render() {
     return (
-      <div>
-        <Title>
-          {this.props.restaurantName}
-        </Title>
-        <form>
-          <input/>
-        </form>
-        <PostReview onClick={this.props.toggleModal}>
-          Post Review
-        </PostReview>
-      </div>
+      <ModalBackground>
+        <ModalContent>
+          <Title>
+            {this.props.restaurantName}
+          </Title>
+          <Form>
+            <ReviewText placeholder={this.state.value} onChange={this.handleChange}>
+            </ReviewText>
+          </Form>
+          <PostReview onClick={this.props.toggleModal}>
+            Post Review
+          </PostReview>
+        </ModalContent>
+      </ModalBackground>
     );
   }
 }
