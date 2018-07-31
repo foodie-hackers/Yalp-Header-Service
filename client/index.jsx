@@ -147,7 +147,6 @@ class App extends React.Component {
       url: `http://localhost:3000/restaurants/${this.state.id}`,
       dataType: 'json',
     }).then((results) => {
-      console.log(results);
       this.setState({
         name: results[0].name,
         averageRating: results[0].averageRating,
