@@ -10,6 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 app.get('/restaurants/:restaurantId', (req, res) => {
   db.getRestaurantInfo(req.params.restaurantId, (error, results) => {
     if (error) {
