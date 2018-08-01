@@ -164,67 +164,70 @@ class App extends React.Component {
 
   render() {
     return (
-      <Div className="biz-page-header">
-        <HeaderLeft>
-          <div className="biz-main-info">
-            <RestaurantName>
-              {this.state.name}
-            </RestaurantName>
-            <ReviewInfo>
-              <AverageRating>
-                {Array(5).fill().map((e, i) => (
-                  i + 0.5 === this.state.averageRating
-                    ? <FontAwesomeIcon icon="star" style={halfRating(this.state.averageRating)} />
-                    : <FontAwesomeIcon icon="star" style={i < this.state.averageRating ? rating(this.state.averageRating) : rating(0)} />
-                ))}
-              </AverageRating>
-              <ReviewCount>
-                {this.state.reviewCount} reviews
-              </ReviewCount>
-            </ReviewInfo>
-            <PriceRange>
-              {this.state.priceRange === 1 ? '$' : this.state.priceRange === 2 ? '$$' : this.state.priceRange === 3 ? '$$$' : '$$$$'}
-            </PriceRange>
-          </div>
-        </HeaderLeft>
-        {this.state.modalIsOpen
-          && (
-            <WriteReviewModal
-              restaurantName={this.state.name}
-              toggleModal={this.toggleModal}
-            />
-          )}
-        <HeaderRight>
-          <WriteReview>
-            <ReviewButton onClick={this.toggleModal}>
-              <StarIcon>
-                <FontAwesomeIcon icon="star" />
-              </StarIcon>
-              Write a Review
-            </ReviewButton>
-          </WriteReview>
-          <PhotoShareSave>
-            <Button>
-              <Icon>
-                <FontAwesomeIcon icon="camera" />
-              </Icon>
-              Add Photo
-            </Button>
-            <Button>
-              <Icon>
-                <FontAwesomeIcon icon="share-square" />
-              </Icon>
-              Share
-            </Button>
-            <Button>
-              <Icon>
-                <FontAwesomeIcon icon="bookmark" />
-              </Icon>
-              Save
-            </Button>
-          </PhotoShareSave>
-        </HeaderRight>
-      </Div>
+      <div>
+        <img alt="" src="https://s3-us-west-1.amazonaws.com/yalp-pictures/YalpHeader.png" />
+        <Div className="biz-page-header">
+          <HeaderLeft>
+            <div className="biz-main-info">
+              <RestaurantName>
+                {this.state.name}
+              </RestaurantName>
+              <ReviewInfo>
+                <AverageRating>
+                  {Array(5).fill().map((e, i) => (
+                    i + 0.5 === this.state.averageRating
+                      ? <FontAwesomeIcon icon="star" style={halfRating(this.state.averageRating)} />
+                      : <FontAwesomeIcon icon="star" style={i < this.state.averageRating ? rating(this.state.averageRating) : rating(0)} />
+                  ))}
+                </AverageRating>
+                <ReviewCount>
+                  {this.state.reviewCount} reviews
+                </ReviewCount>
+              </ReviewInfo>
+              <PriceRange>
+                {this.state.priceRange === 1 ? '$' : this.state.priceRange === 2 ? '$$' : this.state.priceRange === 3 ? '$$$' : '$$$$'}
+              </PriceRange>
+            </div>
+          </HeaderLeft>
+          {this.state.modalIsOpen
+            && (
+              <WriteReviewModal
+                restaurantName={this.state.name}
+                toggleModal={this.toggleModal}
+              />
+            )}
+          <HeaderRight>
+            <WriteReview>
+              <ReviewButton onClick={this.toggleModal}>
+                <StarIcon>
+                  <FontAwesomeIcon icon="star" />
+                </StarIcon>
+                Write a Review
+              </ReviewButton>
+            </WriteReview>
+            <PhotoShareSave>
+              <Button>
+                <Icon>
+                  <FontAwesomeIcon icon="camera" />
+                </Icon>
+                Add Photo
+              </Button>
+              <Button>
+                <Icon>
+                  <FontAwesomeIcon icon="share-square" />
+                </Icon>
+                Share
+              </Button>
+              <Button>
+                <Icon>
+                  <FontAwesomeIcon icon="bookmark" />
+                </Icon>
+                Save
+              </Button>
+            </PhotoShareSave>
+          </HeaderRight>
+        </Div>
+      </div>
     );
   }
 }
