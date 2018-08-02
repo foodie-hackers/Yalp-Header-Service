@@ -39,7 +39,7 @@ const SearchBarBorder = styled.div`
 const Div = styled.div`
   display: flex;
   height: 112px;
-  font-family: Helvetica Neue;
+  font-family: Helvetica;
   width: 960px;
 `;
 
