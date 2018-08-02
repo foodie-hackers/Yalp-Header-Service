@@ -12,13 +12,33 @@ library.add(faStar, faCamera, faShareSquare, faBookmark);
 
 const Container = styled.div`
   display: flex;
-  height: 112px;
+  flex-direction: column;
   background-color: #f5f5f5;
-  justify-content: center;
+  align-items: center;
 `;
+
+const SearchBar = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  background-color: #D32323;
+  width: 100%;
+`;
+
+const SearchBarBorder = styled.div`
+  width: 100%;
+  background-color: rgb(189, 31, 31);
+  position: absolute;
+  bottom: 0;
+  height: 27px;
+  z-index: 0;
+`;
+
 
 const Div = styled.div`
   display: flex;
+  height: 112px;
   font-family: Helvetica Neue;
   width: 960px;
 `;
@@ -52,7 +72,7 @@ const AverageRating = styled.div`
 `;
 
 const rating = stars => ({
-  backgroundColor: stars > 3.5 ? 'red' : stars > 0 ? 'orange' : 'gray',
+  backgroundColor: stars > 4.5 ? '#D32323' : stars > 3.5 ? '#F15C4F' : stars > 2.5 ? '#FF9242' : stars > 1.5 ? '#FEC011' : stars > 0.5 ? '#F1BD79' : '#CCCCCC',
   borderRadius: 3,
   color: 'white',
   margin: '2px',
@@ -60,7 +80,7 @@ const rating = stars => ({
 });
 
 const halfRating = stars => ({
-  background: stars > 3.5 ? 'linear-gradient(to right, red 50%, gray 50%)' : 'linear-gradient(to right, orange 50%, gray 50%)',
+  background: stars > 4.5 ? 'linear-gradient(to right, #D32323 50%, #CCCCCC 50%)' : stars > 3.5 ? 'linear-gradient(to right, #F15C4F 50%, #CCCCCC 50%)' : stars > 2.5 ? 'linear-gradient(to right, #FF9242 50%, #CCCCCC 50%)' : stars > 1.5 ? 'linear-gradient(to right, #FEC011 50%, #CCCCCC 50%)' : stars > 0.5 ? 'linear-gradient(to right, #F1BD79 50%, #CCCCCC 50%)' : 'linear-gradient(to right, #FF9242 50%, #CCCCCC 50%)',
   borderRadius: 3,
   color: 'white',
   margin: '2px',
@@ -179,72 +199,73 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <img alt="" src="https://s3-us-west-1.amazonaws.com/yalp-pictures/YalpHeader.png" />
-        <Container>
-          <Div>
-            <HeaderLeft>
-                <RestaurantName>
-                  {this.state.name}
-                </RestaurantName>
-                <ReviewInfo>
-                  <AverageRating>
-                    {Array(5).fill().map((e, i) => (
-                      i + 0.5 === this.state.averageRating
-                        ? <FontAwesomeIcon icon="star" style={halfRating(this.state.averageRating)} />
-                        : <FontAwesomeIcon icon="star" style={i < this.state.averageRating ? rating(this.state.averageRating) : rating(0)} />
-                    ))}
-                  </AverageRating>
-                  <ReviewCount>
-                    {this.state.reviewCount} reviews
-                  </ReviewCount>
-                </ReviewInfo>
-                <PriceRange>
-                  {this.state.priceRange === 1 ? '$' : this.state.priceRange === 2 ? '$$' : this.state.priceRange === 3 ? '$$$' : '$$$$'}
-                </PriceRange>
-            </HeaderLeft>
-            {this.state.modalIsOpen
-              && (
-                <WriteReviewModal
-                  restaurantName={this.state.name}
-                  toggleModal={this.toggleModal}
-                />
-              )}
-            <HeaderRight>
-              <Box>
-                <WriteReview>
-                  <ReviewButton onClick={this.toggleModal}>
-                    <StarIcon>
-                      <FontAwesomeIcon icon="star" />
-                    </StarIcon>
-                    Write a Review
-                  </ReviewButton>
-                </WriteReview>
-                <PhotoShareSave>
-                  <Button>
-                    <Icon>
-                      <FontAwesomeIcon icon="camera" />
-                    </Icon>
-                    Add&nbsp;Photo
-                  </Button>
-                  <Button>
-                    <Icon>
-                      <FontAwesomeIcon icon="share-square" />
-                    </Icon>
-                    Share
-                  </Button>
-                  <Button>
-                    <Icon>
-                      <FontAwesomeIcon icon="bookmark" />
-                    </Icon>
-                    Save
-                  </Button>
-                </PhotoShareSave>
-              </Box>
-            </HeaderRight>
-          </Div>
-        </Container>
-      </div>
+      <Container>
+        <SearchBar>
+          <img style={{ zIndex: '1' }} alt="" src="https://s3-us-west-1.amazonaws.com/yalp-pictures/YalpHeader.png" />
+          <SearchBarBorder />
+        </SearchBar>
+        <Div>
+          <HeaderLeft>
+              <RestaurantName>
+                {this.state.name}
+              </RestaurantName>
+              <ReviewInfo>
+                <AverageRating>
+                  {Array(5).fill().map((e, i) => (
+                    i + 0.5 === this.state.averageRating
+                      ? <FontAwesomeIcon icon="star" style={halfRating(this.state.averageRating)} />
+                      : <FontAwesomeIcon icon="star" style={i < this.state.averageRating ? rating(this.state.averageRating) : rating(0)} />
+                  ))}
+                </AverageRating>
+                <ReviewCount>
+                  {this.state.reviewCount} reviews
+                </ReviewCount>
+              </ReviewInfo>
+              <PriceRange>
+                {this.state.priceRange === 1 ? '$' : this.state.priceRange === 2 ? '$$' : this.state.priceRange === 3 ? '$$$' : '$$$$'}
+              </PriceRange>
+          </HeaderLeft>
+          {this.state.modalIsOpen
+            && (
+              <WriteReviewModal
+                restaurantName={this.state.name}
+                toggleModal={this.toggleModal}
+              />
+            )}
+          <HeaderRight>
+            <Box>
+              <WriteReview>
+                <ReviewButton onClick={this.toggleModal}>
+                  <StarIcon>
+                    <FontAwesomeIcon icon="star" />
+                  </StarIcon>
+                  Write a Review
+                </ReviewButton>
+              </WriteReview>
+              <PhotoShareSave>
+                <Button>
+                  <Icon>
+                    <FontAwesomeIcon icon="camera" />
+                  </Icon>
+                  Add&nbsp;Photo
+                </Button>
+                <Button>
+                  <Icon>
+                    <FontAwesomeIcon icon="share-square" />
+                  </Icon>
+                  Share
+                </Button>
+                <Button>
+                  <Icon>
+                    <FontAwesomeIcon icon="bookmark" />
+                  </Icon>
+                  Save
+                </Button>
+              </PhotoShareSave>
+            </Box>
+          </HeaderRight>
+        </Div>
+      </Container>
     );
   }
 }
