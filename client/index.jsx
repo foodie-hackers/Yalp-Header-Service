@@ -61,6 +61,7 @@ const rating = stars => ({
 
 const halfRating = stars => ({
   background: stars > 3.5 ? 'linear-gradient(to right, red 50%, gray 50%)' : 'linear-gradient(to right, orange 50%, gray 50%)',
+  borderRadius: 3,
   color: 'white',
   margin: '2px',
   padding: '4px',
