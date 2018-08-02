@@ -118,6 +118,11 @@ const Button = styled.div`
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   border-color: #ccc;
   border: 1px solid;
+  border-top-color: rgb(204, 204, 204);
+  border-left-color: rgb(204, 204, 204);
+  border-right-color: rgb(204, 204, 204);
+  border-bottom-color: rgb(204, 204, 204);
+  border-radius: 3px;
 `;
 
 const Icon = styled.div`
@@ -127,6 +132,7 @@ const Icon = styled.div`
 
 const PhotoShareSave = styled.div`
   display: flex;
+  font-weight: 700;
 `;
 
 const Box = styled.div`
