@@ -53,6 +53,7 @@ const AverageRating = styled.div`
 
 const rating = stars => ({
   backgroundColor: stars > 3.5 ? 'red' : stars > 0 ? 'orange' : 'gray',
+  borderRadius: 3,
   color: 'white',
   margin: '2px',
   padding: '4px',
