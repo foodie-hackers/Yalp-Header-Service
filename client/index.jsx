@@ -84,13 +84,14 @@ const WriteReview = styled.div`
 
 const ReviewButton = styled.div`
   display: flex;
-  vertical-align: middle;
-  font-size: 16px;
+  width: 125px;
+  height: 17px;
+  font-size: 14px;
   cursor: pointer;
   border: 1px solid;
   font-weight: bold;
-  text-align: center;
-  padding: 12px 19px 4px;
+  align-items: center;
+  padding: 8px 19px 9px 12px;
   border-radius: 3px;
   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
   background-color: #d90007;
@@ -99,33 +100,39 @@ const ReviewButton = styled.div`
 `;
 
 const StarIcon = styled.div`
-  display: flex;
   width: 24px;
   height: 24px;
 `;
 
-const Button = ReviewButton.extend`
+const Button = styled.div`
+  display: flex;
+  justify-content: center;
   color: #666;
+  height: 18px;
   background-color: white;
-  padding: 5px 8px;
+  padding: 5px 8px 5px 8px;
   font-size: 12px;
-  text-align: right;
+  align-items: center;
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   border-color: #ccc;
   border: 1px solid;
 `;
 
 const Icon = styled.div`
-  display: flex;
   width: 18px;
   height: 18px;
 `;
 
 const PhotoShareSave = styled.div`
   display: flex;
-  margin: 24px 0px 24px 24px;
 `;
 
+const Box = styled.div`
+  display: flex;
+  width: 405px;
+  height: 112px;
+  align-items: center;
+`;
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -166,9 +173,8 @@ class App extends React.Component {
     return (
       <div>
         <img alt="" src="https://s3-us-west-1.amazonaws.com/yalp-pictures/YalpHeader.png" />
-        <Div className="biz-page-header">
+        <Div>
           <HeaderLeft>
-            <div className="biz-main-info">
               <RestaurantName>
                 {this.state.name}
               </RestaurantName>
@@ -187,7 +193,6 @@ class App extends React.Component {
               <PriceRange>
                 {this.state.priceRange === 1 ? '$' : this.state.priceRange === 2 ? '$$' : this.state.priceRange === 3 ? '$$$' : '$$$$'}
               </PriceRange>
-            </div>
           </HeaderLeft>
           {this.state.modalIsOpen
             && (
@@ -197,34 +202,36 @@ class App extends React.Component {
               />
             )}
           <HeaderRight>
-            <WriteReview>
-              <ReviewButton onClick={this.toggleModal}>
-                <StarIcon>
-                  <FontAwesomeIcon icon="star" />
-                </StarIcon>
-                Write a Review
-              </ReviewButton>
-            </WriteReview>
-            <PhotoShareSave>
-              <Button>
-                <Icon>
-                  <FontAwesomeIcon icon="camera" />
-                </Icon>
-                Add Photo
-              </Button>
-              <Button>
-                <Icon>
-                  <FontAwesomeIcon icon="share-square" />
-                </Icon>
-                Share
-              </Button>
-              <Button>
-                <Icon>
-                  <FontAwesomeIcon icon="bookmark" />
-                </Icon>
-                Save
-              </Button>
-            </PhotoShareSave>
+            <Box>
+              <WriteReview>
+                <ReviewButton onClick={this.toggleModal}>
+                  <StarIcon>
+                    <FontAwesomeIcon icon="star" />
+                  </StarIcon>
+                  Write a Review
+                </ReviewButton>
+              </WriteReview>
+              <PhotoShareSave>
+                <Button>
+                  <Icon>
+                    <FontAwesomeIcon icon="camera" />
+                  </Icon>
+                  Add&nbsp;Photo
+                </Button>
+                <Button>
+                  <Icon>
+                    <FontAwesomeIcon icon="share-square" />
+                  </Icon>
+                  Share
+                </Button>
+                <Button>
+                  <Icon>
+                    <FontAwesomeIcon icon="bookmark" />
+                  </Icon>
+                  Save
+                </Button>
+              </PhotoShareSave>
+            </Box>
           </HeaderRight>
         </Div>
       </div>
