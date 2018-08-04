@@ -1,9 +1,9 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
+  host: process.env.RDS_HOSTNAME || 'localhost',
+  user: process.env.RDS_USERNAME || 'root',
+  password: process.env.RDS_PASSWORD || '',
   database: 'yalp_header',
 });
 
