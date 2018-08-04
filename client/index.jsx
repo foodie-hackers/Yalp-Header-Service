@@ -179,7 +179,7 @@ class App extends React.Component {
   componentDidMount() {
     $.ajax({
       method: 'GET',
-      url: `http://localhost:3000/restaurants/${this.state.id}`,
+      url: `restaurants/${this.state.id}`,
       dataType: 'json',
     }).then((results) => {
       this.setState({
