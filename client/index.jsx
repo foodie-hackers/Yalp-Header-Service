@@ -179,7 +179,7 @@ class App extends React.Component {
   componentDidMount() {
     $.ajax({
       method: 'GET',
-      url: `restaurants/${this.state.id}`,
+      url: `http://yalp-header-service-dev.us-west-1.elasticbeanstalk.com/restaurants/${this.state.id}`,
       dataType: 'json',
     }).then((results) => {
       this.setState({
